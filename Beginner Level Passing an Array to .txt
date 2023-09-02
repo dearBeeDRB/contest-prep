@@ -1,0 +1,108 @@
+Beginner Level: Passing an Array to a Function
+In C++, you can pass arrays to functions by specifying the array's data type and name as a parameter. Here's a basic example:
+
+cpp
+Copy code
+#include <iostream>
+
+// Function to calculate the sum of elements in an array
+int calculateSum(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+int main() {
+    int myArray[] = {1, 2, 3, 4, 5};
+    int arraySize = sizeof(myArray) / sizeof(myArray[0]);
+
+    int result = calculateSum(myArray, arraySize);
+    
+    std::cout << "The sum of elements in the array is: " << result << std::endl;
+
+    return 0;
+}
+In this beginner-level example:
+
+We define a function calculateSum that takes two parameters: arr (an array of integers) and size (the size of the array).
+Inside the function, we use a loop to iterate through the array and calculate the sum of its elements.
+In the main function, we create an array myArray, determine its size using sizeof, and then pass both the array and its size as arguments to calculateSum.
+Intermediate Level: Returning an Array from a Function
+You can also return an array from a function in C++. Here's an example:
+
+cpp
+Copy code
+#include <iostream>
+
+// Function to create and return an array with consecutive integers
+int* createArray(int size) {
+    int* arr = new int[size];
+    for (int i = 0; i < size; ++i) {
+        arr[i] = i + 1;
+    }
+    return arr;
+}
+
+int main() {
+    int arraySize = 5;
+    int* myArray = createArray(arraySize);
+
+    std::cout << "The created array contains:";
+    for (int i = 0; i < arraySize; ++i) {
+        std::cout << " " << myArray[i];
+    }
+    std::cout << std::endl;
+
+    delete[] myArray; // Don't forget to free the dynamically allocated memory
+
+    return 0;
+}
+In this intermediate-level example:
+
+The createArray function dynamically allocates an array of integers, initializes it with consecutive integers, and returns a pointer to the array.
+In the main function, we call createArray to create an array and assign the pointer to myArray.
+We then use a loop to print the elements of the created array.
+Don't forget to free the dynamically allocated memory using delete[] when you're done with the array to prevent memory leaks.
+
+Advanced Level: Using Array References
+For advanced usage, you can also pass arrays by reference in C++. Here's an example:
+
+cpp
+Copy code
+#include <iostream>
+
+// Function to modify the elements of an array using a reference
+void modifyArray(int (&arr)[5]) {
+    for (int i = 0; i < 5; ++i) {
+        arr[i] *= 2;
+    }
+}
+
+int main() {
+    int myArray[] = {1, 2, 3, 4, 5};
+
+    std::cout << "Original array: ";
+    for (int i = 0; i < 5; ++i) {
+        std::cout << myArray[i] << " ";
+    }
+    std::cout << std::endl;
+
+    modifyArray(myArray);
+
+    std::cout << "Modified array: ";
+    for (int i = 0; i < 5; ++i) {
+        std::cout << myArray[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+In this advanced-level example:
+
+The modifyArray function takes an array reference as its parameter, allowing it to directly modify the elements of the original array.
+In the main function, we create an array myArray, print its original values, call modifyArray to double the elements, and then print the modified values.
+Passing arrays by reference can be more efficient and is useful when you want to modify the original array within a function without making a copy.
+
+These examples should cover the basics of passing arrays to functions in C++ from beginner to advanced levels.
