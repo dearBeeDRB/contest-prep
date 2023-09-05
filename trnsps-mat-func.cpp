@@ -1,8 +1,7 @@
 #include<iostream>
 using namespace std;
 
-void print_transpose(int arr[][5], int row, int col){
-    int new_array[5][5];
+void print_transpose(int arr[][5],int new_array[][5], int row, int col){
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
@@ -11,14 +10,7 @@ void print_transpose(int arr[][5], int row, int col){
         }
     }
 
-    for (int i = 0; i < col; i++)
-    {
-        for (int j = 0; j < row; j++)
-        {
-            cout<<new_array[i][j]<<" ";
-        }
-        cout<<endl;
-    }
+    
     
     return;
 }
@@ -35,7 +27,16 @@ int main(){
         }
     }
 
-    print_transpose(my_array, row_num, col_num);
+    print_transpose(my_array, transposed_array, row_num, col_num);
+
+    for (int i = 0; i < col_num; i++)
+    {
+        for (int j = 0; j < row_num; j++)
+        {
+            cout<<transposed_array[i][j]<<" ";
+        }
+        cout<<endl;
+    }
     
     return 0;
 }
