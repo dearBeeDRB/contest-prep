@@ -18,6 +18,7 @@ void sort_bubble(int arr[], int n){
                 arr[j+1] = temp;
             }   
         }
+        
         if (is_sorted == true)
         {
             break;
